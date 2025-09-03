@@ -1,0 +1,374 @@
+/* ===================== Root Variables ===================== */
+:root {
+  --bg: #f9fafb;
+  --card-bg: #fff;
+  --text-color: #333;
+  --primary-color: #3498db;
+  --primary-hover: #2980b9;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --neutral-gray: #666;
+  --sidebar-bg: #2c3e50;
+  --sidebar-text: #ecf0f1;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* ===================== Global Reset ===================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-color);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================== Layout ===================== */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.sidebar h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar nav a {
+  display: block;
+  margin: 1rem 0;
+  text-decoration: none;
+  color: var(--sidebar-text);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color var(--transition-speed) ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a:focus {
+  color: var(--primary-color);
+  outline: none;
+}
+
+.status {
+  margin-top: 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.status.online {
+  color: var(--success-color);
+}
+
+.status.offline {
+  color: var(--danger-color);
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ===================== Cards ===================== */
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* ===================== Form ===================== */
+form .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+input,
+select {
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+input::placeholder {
+  color: var(--neutral-gray);
+  font-style: italic;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px var(--primary-color);
+}
+
+/* Tooltip styling for inputs (using title attribute) */
+input[title]:hover,
+select[title]:hover {
+  cursor: help;
+}
+
+/* Group related inputs visually */
+form .grid label:nth-child(odd) {
+  background-color: #f7f9fc;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+}
+
+/* ===================== Buttons ===================== */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+  transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  user-select: none;
+}
+
+button:disabled {
+  background-color: #7fb3d5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 8px 16px rgba(41, 128, 185, 0.5);
+  outline: none;
+}
+
+/* ===================== Visual Feedback ===================== */
+/* Prediction badges */
+.results span.danger {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+}
+
+.results span.safe {
+  background-color: var(--success-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Loading spinner (simple) */
+button.loading::after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== Charts ===================== */
+.chart {
+  margin-top: 1rem;
+  height: 250px;
+}
+
+/* ===================== History Table ===================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+thead {
+  background-color: #f0f3f7;
+}
+
+th,
+td {
+  padding: 1rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  font-weight: 700;
+  color: var(--neutral-gray);
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+td.danger {
+  color: var(--danger-color);
+  font-weight: 700;
+}
+
+td.safe {
+  color: var(--success-color);
+  font-weight: 700;
+}
+
+/* ===================== Responsive Design ===================== */
+@media (max-width: 1024px) {
+  .main {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem 0.5rem;
+  }
+
+  .sidebar h2 {
+    display: none;
+  }
+
+  .sidebar nav a {
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  form .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  form .grid {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* ===================== Accessibility ===================== */
+/* Focus outlines for keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+select:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ===================== Utility Classes ===================== */
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-bold {
+  font-weight: 700 !important;
+}

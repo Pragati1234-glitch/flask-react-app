@@ -1,0 +1,231 @@
+/* ============================
+   Global Reset
+============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  scroll-behavior: smooth;
+}
+
+/* ============================
+   Light & Dark Theme
+============================ */
+.light-theme {
+  background: linear-gradient(135deg, #f2f8ff, #dce6f7);
+  color: #0f3057;
+}
+
+.dark-theme {
+  background: linear-gradient(135deg, #0f3057, #1a1f4b);
+  color: #f2f8ff;
+}
+
+/* ============================
+   Header
+============================ */
+.global-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(15,48,87,0.85);
+  color: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.global-header h1 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.theme-toggle-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #f4a261;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+  background: #e07b39;
+}
+
+/* ============================
+   Footer
+============================ */
+.global-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(15,48,87,0.9);
+  color: #fff;
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* ============================
+   Utility Classes
+============================ */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+
+.text-center { text-align: center; }
+.text-bold { font-weight: bold; }
+.text-uppercase { text-transform: uppercase; }
+
+.rounded { border-radius: 12px; }
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+/* ============================
+   Scrollbar Styling
+============================ */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dce6f7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f3057;
+  border-radius: 10px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: #1a1f4b;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #f4a261;
+}
+
+/* ============================
+   Animations
+============================ */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ============================
+   Buttons
+============================ */
+button {
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+button.primary {
+  background: #0f3057;
+  color: white;
+}
+
+button.primary:hover {
+  background: #00509e;
+  transform: scale(1.05);
+}
+
+button.secondary {
+  background: #f4a261;
+  color: #fff;
+}
+
+button.secondary:hover {
+  background: #e07b39;
+  transform: scale(1.05);
+}
+
+/* ============================
+   Headings
+============================ */
+h1, h2, h3, h4 {
+  letter-spacing: 1px;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.1rem; }
+
+/* ============================
+   Responsive
+============================ */
+@media (max-width: 768px) {
+  .global-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .theme-toggle-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  .global-header { padding: 10px 15px; }
+}
+
+/* ============================
+   Animations for Main App
+============================ */
+main {
+  padding: 30px;
+  animation: fadeInUp 0.8s ease forwards;
+}

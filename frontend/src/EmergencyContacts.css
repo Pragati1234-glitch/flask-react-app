@@ -1,0 +1,29 @@
+.emergency-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.emergency-section h2 {
+  color: #d9534f;
+}
+
+.emergency-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.emergency-section li {
+  margin-bottom: 10px;
+}
+
+.emergency-section a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.emergency-section a:hover {
+  text-decoration: underline;
+}
